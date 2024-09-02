@@ -1,0 +1,12 @@
+{
+    "tareas_activas": [],
+    "tareas_archivadas": [
+        {
+            "titulo": "Ejemplo de tarea",
+            "descripcion": "Descripci\u00c3\u00b3n de ejemplo",
+            "fecha_vencimiento": "2024-09-15",
+            "etiqueta": "Trabajo",
+            "estado": "completada"
+        }
+    ]
+}
