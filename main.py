@@ -8,12 +8,6 @@ logging.basicConfig(level=logging.DEBUG,  # Nivel mínimo a capturar
                     format='%(asctime)s - %(levelname)s - %(message)s',  # Formato del mensaje
                     datefmt='%Y-%m-%d %H:%M:%S')  
 
-logging.debug("Este es un mensaje de depuración.")
-logging.info("Este es un mensaje informativo.")
-logging.warning("Este es un mensaje de advertencia.")
-logging.error("Este es un mensaje de error.")
-logging.critical("Este es un mensaje crítico.")
-
 def menu():
     logging.info("Aplicación iniciada correctamente.")
     while True:
@@ -37,21 +31,22 @@ def menu():
         print("1. Agregar tarea")
         print("2. Eliminar tarea")
         print("3. Actualizar tarea")
-        print("4. Buscar tarea por filtro")
-        print("5. Marcar Tarea ")
-        print("6. Archivar tareas completadas")
-        print("7. Consultar tareas archivadas")
-        print("8. Ver tareas no archivadas")
-        print("9. Salir")
+        print("4. Consultar tarea por titulo")
+        print("5. Buscar tarea por filtro")
+        print("6. Marcar Tarea ")
+        print("7. Archivar tareas completadas")
+        print("8. Consultar tareas archivadas")
+        print("9. Ver tareas no archivadas")
+        print("10. Salir")
         
         opcion = input("Seleccione una opción: ")
         
-        if opcion == '9':
+        if opcion == '10':
             print("Saliendo...")
             break
 
         elif opcion == '1':
-            nombre_tarea = input("Ingrese nombre tarea: ")
+            nombre_tarea = input("Ingrese titulo tarea: ")
             descripcion = input("Ingrese la descripcion: ")
             fecha_vencimiento = input("Ingrese fecha de vencimiento formato (dd/mm/yyyy): ")
             etiqueta = input("Ingrese etiqueta: ")
@@ -62,8 +57,12 @@ def menu():
 
         elif opcion == '3':
             actualizar_tarea()
-
+        
         elif opcion == '4':
+            nombre_tarea = input("Ingrese titulo tarea: ")
+            consultar_tarea(nombre_tarea)
+
+        elif opcion == '5':
             print("\n1. Buscar por fecha de vencimiento")
             print("2. Buscar por etiquetas")
             print("3. Buscar por estado de la tarea")
@@ -84,18 +83,18 @@ def menu():
                 filtrar_por_estado(estado)
 
 
-        elif opcion == "5":
+        elif opcion == "6":
             titulo = input("Ingrese el título de la tarea: ")
             nuevo_estado = input("Ingrese el nuevo estado ('en progreso' o 'completada'): ")
             marcar_tarea(titulo, nuevo_estado)
 
-        elif opcion == '6':
+        elif opcion == '7':
             archivar_tareas()
         
-        elif opcion == '7':
+        elif opcion == '8':
             consultar_tareas_archivadas()
         
-        elif opcion == '8':
+        elif opcion == '9':
             ver_tareas_no_archivadas()
 
         else:
@@ -256,6 +255,37 @@ def actualizar_tarea(archivo_json='tareas.json'):
         logging.error(f"Error: No se pudo decodificar el archivo JSON '{archivo_json}")
     except Exception as e:
         logging.error("Error inesperado")
+
+def consultar_tarea(titulo):
+    datos = cargar_datos()
+    tareas_activas = datos['tareas_activas']
+    tareas_archivadas = datos['tareas_archivadas']
+
+    tareas_activas = [tareas for tareas in tareas_activas if tareas['titulo'].find(titulo) != -1]
+
+    if not tareas_activas:
+        logging.info("No hay tareas activas con dicho titulo")
+    else:
+        print('\nTareas activas filtradas por titulo:')
+        for tarea in tareas_activas:
+            print('\nTarea: '+ tarea['titulo'])
+            print('Descripcion: '+ tarea['descripcion'])
+            print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
+            print('Etiqueta: '+ tarea['etiqueta'])
+            print('Estado: '+ tarea['estado'])
+    
+    tareas_archivadas = [tareas for tareas in tareas_archivadas if tareas['titulo'].find(titulo) != -1]
+    
+    if not tareas_archivadas:
+        logging.info("No hay tareas archivadas con dicha titulo")
+    else:
+        print('\nTareas archivadas filtradas por titulo:')
+        for tarea in tareas_archivadas:
+            print('\nTarea: '+ tarea['titulo'])
+            print('Descripcion: '+ tarea['descripcion'])
+            print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
+            print('Etiqueta: '+ tarea['etiqueta'])
+            print('Estado: '+ tarea['estado'])
 
 def cargar_datos(archivo_json='tareas.json'):
     try:
