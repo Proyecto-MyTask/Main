@@ -6,6 +6,7 @@ MyTask es un programa que permitirá al usuario registrarse, iniciar sesión y m
 Para la instalación de este programa se debe bajar el repositorio a un ambiente local desde github, para esto se debe clonar de la siguiente manera: "git clone https://github.com/Proyecto-MyTask/Main.git"
 
 Cómo usar: Para la utilización del programa se deben seguir las instrucciones detalladas durante la ejecución, las que vendrán con el siguiente formato:
+
 --- Bienvenido, favor registrarse o iniciar sesión ---
 1. Registrarse
 2. Iniciar Sesión
@@ -27,3 +28,5 @@ Seleccione una opción: SELECCIONAR NUMERO DE LA OPCION
 Cada opción tendrá además opciones dentro de ellas, pero todas siguen el mismo formato detallado.
 
 Para contribuir al repositorio simplemente se debe clonar y crear una nueva rama, de manera de no afectar la principal, una vez hechos las implementaciones se podrá crear una pull request y los mantenedores podrán revisar y aceptar tus cambios.
+
+Licencia: Sin licencia.
