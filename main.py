@@ -189,6 +189,13 @@ def encriptar_contraseña(contraseña):
 
 def crear_tarea(titulo, descripcion,fecha_vencimiento, etiqueta, estado, archivo_json='tareas.json'):
     tareas = cargar_datos()
+    try:
+        datetime.strptime(fecha_vencimiento, "%d/%m/%Y")
+    except ValueError:
+        print("Formato fecha no admitido")
+        logging.warning("Formato de fecha no admitido")
+        return
+
     tarea_agregar = {'titulo':titulo,'descripcion':descripcion, 'fecha_vencimiento':fecha_vencimiento, 'etiqueta':etiqueta, 'estado':estado}
     tareas["tareas_activas"].append(tarea_agregar)
     
@@ -248,6 +255,13 @@ def actualizar_tarea(archivo_json='tareas.json'):
     tarea_actualizar = input("Ingrese numero de tarea a actualizar\n")
     elemento_actualizar = input("\nIndique que desea actualizar (titulo, descripcion, fecha_vencimiento, etiqueta):")
     tareas['tareas_activas'][int(tarea_actualizar)-1][elemento_actualizar] = input("Ingrese nuevo valor:")
+    if(elemento_actualizar == 'fecha_vencimiento'):
+        try:
+            datetime.strptime(tareas['tareas_activas'][int(tarea_actualizar)-1][elemento_actualizar], "%d/%m/%Y")
+        except ValueError:
+            print("Formato fecha no admitido")
+            logging.warning("Formato de fecha no admitido")
+            return
 
     try:
         with open(archivo_json, 'w') as archivo:
@@ -383,12 +397,22 @@ def filtrar_por_fecha(fecha_inicio, fecha_termino):
     tareas_archivadas = datos['tareas_archivadas']
 
     if(fecha_inicio != ''):
-        fecha1 = datetime.strptime(fecha_inicio, "%d/%m/%Y")
-        tareas_activas = [tareas for tareas in tareas_activas if datetime.strptime(tareas['fecha_vencimiento'], "%d/%m/%Y") >= fecha1]
+        try:
+            fecha1 = datetime.strptime(fecha_inicio, "%d/%m/%Y")
+            tareas_activas = [tareas for tareas in tareas_activas if datetime.strptime(tareas['fecha_vencimiento'], "%d/%m/%Y") >= fecha1]
+        except ValueError:
+            print("Formato fecha no admitido")
+            logging.warning("Formato de fecha no admitido")
+            return
+        
     if(fecha_termino != ''):
-        fecha2 = datetime.strptime(fecha_termino, "%d/%m/%Y")
-        tareas_activas = [tareas for tareas in tareas_activas if datetime.strptime(tareas['fecha_vencimiento'], "%d/%m/%Y") <= fecha2]
-    
+        try:
+            fecha2 = datetime.strptime(fecha_termino, "%d/%m/%Y")
+            tareas_activas = [tareas for tareas in tareas_activas if datetime.strptime(tareas['fecha_vencimiento'], "%d/%m/%Y") <= fecha2]
+        except ValueError:
+            print("Formato fecha no admitido")
+            logging.warning("Formato de fecha no admitido")
+            return
     if not tareas_activas:
         logging.info("No hay tareas activas en dichas fechas")
     else:

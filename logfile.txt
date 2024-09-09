@@ -1,2 +1,5 @@
 2024-09-08 22:52:13 - INFO - Aplicación iniciada correctamente.
 2024-09-08 22:52:23 - INFO - Usuario ha iniciado sesión
+2024-09-09 08:53:20 - INFO - Aplicación iniciada correctamente.
+2024-09-09 08:53:25 - INFO - Usuario ha iniciado sesión
+2024-09-09 08:53:50 - WARNING - Formato de fecha no admitido
