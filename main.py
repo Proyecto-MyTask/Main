@@ -17,19 +17,42 @@ def menu():
         print("\n--- Bienvenido, favor registrarse o iniciar sesión ---")
         print("1. Registrarse")
         print("2. Iniciar Sesión")
-        opcion = input("Seleccione una opción: ")
+        print("3. Salir")
+        opcion_inicio = input("Seleccione una opción: ")
         
-        if opcion == '1':
+        if opcion_inicio == '1':
+            print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
             nombre_usuario = input("Ingrese un nombre de usuario: ")
-            contraseña = input("Ingrese una contraseña: ")
-            registrar_usuario(nombre_usuario, contraseña)
+            if(nombre_usuario == 'cancelar'):
+                logging.info("Accion cancelada")
+                print("Cancelado")
+            else:
+                contraseña = input("Ingrese una contraseña: ")
+                if(contraseña == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    registrar_usuario(nombre_usuario, contraseña)
         
-        elif opcion == '2':
+        elif opcion_inicio == '2':
+            print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
             nombre_usuario = input("Ingrese su nombre de usuario: ")
-            contraseña = input("Ingrese su contraseña: ") 
-            if iniciar_sesion(nombre_usuario, contraseña):
-                break
-    while True:
+            if(nombre_usuario == 'cancelar'):
+                logging.info("Accion cancelada")
+                print("Cancelado")
+            else:
+                contraseña = input("Ingrese su contraseña: ") 
+                if(contraseña == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    if iniciar_sesion(nombre_usuario, contraseña):
+                        break
+        elif opcion_inicio == "3":
+            print("Saliendo...")
+            break
+
+    while True and opcion_inicio != "3":
         print("\n--- Menú ---")
         print("1. Agregar tarea")
         print("2. Eliminar tarea")
@@ -42,6 +65,7 @@ def menu():
         print("9. Ver tareas no archivadas")
         print("10. Salir")
         
+
         opcion = input("Seleccione una opción: ")
         
         if opcion == '10':
@@ -49,11 +73,19 @@ def menu():
             break
 
         elif opcion == '1':
+            print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
             nombre_tarea = input("Ingrese titulo tarea: ")
-            descripcion = input("Ingrese la descripcion: ")
-            fecha_vencimiento = input("Ingrese fecha de vencimiento formato (dd/mm/yyyy): ")
-            etiqueta = input("Ingrese etiqueta: ")
-            crear_tarea(nombre_tarea,descripcion,fecha_vencimiento,etiqueta,estado='pendiente')
+            if(nombre_tarea != 'cancelar'):
+                descripcion = input("Ingrese la descripcion: ")
+                if(descripcion != 'cancelar'):
+                    fecha_vencimiento = input("Ingrese fecha de vencimiento formato (dd/mm/yyyy): ")
+                    if(fecha_vencimiento != 'cancelar'):
+                        etiqueta = input("Ingrese etiqueta: ")
+                        if(etiqueta != 'cancelar'):
+                            crear_tarea(nombre_tarea,descripcion,fecha_vencimiento,etiqueta,estado='pendiente')
+            if(nombre_tarea == 'cancelar' or descripcion == 'cancelar' or  fecha_vencimiento == 'cancelar' or etiqueta == 'cancelar'):
+                logging.info("Accion cancelada")
+                print("Cancelado")
 
         elif opcion == '2':
             eliminar_tarea()
@@ -62,34 +94,72 @@ def menu():
             actualizar_tarea()
         
         elif opcion == '4':
+            print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
             nombre_tarea = input("Ingrese titulo tarea: ")
-            consultar_tarea(nombre_tarea)
+            if(nombre_tarea == 'cancelar'):
+                logging.info("Accion cancelada")
+                print("Cancelado")
+            else:
+                consultar_tarea(nombre_tarea)
 
         elif opcion == '5':
             print("\n1. Buscar por fecha de vencimiento")
             print("2. Buscar por etiquetas")
             print("3. Buscar por estado de la tarea")
+            print("4. Cancelar")
 
             opcion_filtro = input("Seleccione una opción: ")
 
             if opcion_filtro == '1':
+                print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
                 fecha_de_partida = input("\nFecha desde la que quiere empezar a buscar, dejar vacio si no esta este limite (dd/mm/yyyy): ")
-                fecha_de_termino = input("Fecha hasta la que quiere buscar, dejar vacio si no esta este limite (dd/mm/yyyy): ")
-                filtrar_por_fecha(fecha_de_partida, fecha_de_termino)
+                if(fecha_de_partida == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    fecha_de_termino = input("Fecha hasta la que quiere buscar, dejar vacio si no esta este limite (dd/mm/yyyy): ")
+                    if(fecha_de_partida == 'cancelar'):
+                        logging.info("Accion cancelada")
+                        print("Cancelado")
+                    else:
+                        filtrar_por_fecha(fecha_de_partida, fecha_de_termino)
 
             elif opcion_filtro == '2':
+                print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
                 etiqueta = input("\nIndique etiqueta que busca: ")
-                filtrar_por_etiqueta(etiqueta)
+                if(etiqueta == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    filtrar_por_etiqueta(etiqueta)
 
             elif opcion_filtro == '3':
+                print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
                 estado = input("\nIndique estado que busca (pendiente, en progreso, completada o atrasada): ")
-                filtrar_por_estado(estado)
+                if(estado == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    filtrar_por_estado(estado)
+            elif opcion_filtro == "4":
+                logging.info("Accion cancelada")
+                print("Cancelado")
 
 
         elif opcion == "6":
+            print("A continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
             titulo = input("Ingrese el título de la tarea: ")
-            nuevo_estado = input("Ingrese el nuevo estado ('en progreso' o 'completada'): ")
-            marcar_tarea(titulo, nuevo_estado)
+            if(titulo == 'cancelar'):
+                logging.info("Accion cancelada")
+                print("Cancelado")
+            else:
+                nuevo_estado = input("Ingrese el nuevo estado ('en progreso' o 'completada'): ")
+                if(nuevo_estado == 'cancelar'):
+                    logging.info("Accion cancelada")
+                    print("Cancelado")
+                else:
+                    marcar_tarea(titulo, nuevo_estado)
+            
 
         elif opcion == '7':
             archivar_tareas()
@@ -203,6 +273,7 @@ def crear_tarea(titulo, descripcion,fecha_vencimiento, etiqueta, estado, archivo
     try:
         with open(archivo_json, 'w') as archivo:
             json.dump(tareas, archivo)
+        print("Tarea Creada")
         logging.info("Tarea creada")
     except FileNotFoundError as e:
         logging.error(f"Error: No se encontró el archivo '{archivo_json}")
@@ -224,8 +295,12 @@ def eliminar_tarea(archivo_json='tareas.json'):
     while(iterador < len(tareas['tareas_archivadas']) + len(tareas['tareas_activas'])):
         print('tarea '+ str(iterador + 1) +': ' + str(tareas['tareas_archivadas'][iterador - len(tareas['tareas_activas'])]))
         iterador = iterador + 1
-    tarea_eliminar = int(input("Ingrese numero de tarea a eliminar\n"))
-    if tarea_eliminar-1 < len(tareas['tareas_activas']):
+    tarea_eliminar = int(input("\nIngrese numero de tarea a eliminar (o cancelar si desea interrumpir la acción)\n"))
+    if(tarea_eliminar == "cancelar"):
+        logging.info("Accion cancelada")
+        print("Cancelado")
+        return
+    elif tarea_eliminar-1 < len(tareas['tareas_activas']):
         tareas['tareas_activas'].pop(int(tarea_eliminar) - 1)
     else:
         print(int(tarea_eliminar - len(tareas['tareas_activas'])) - 1)
@@ -234,6 +309,7 @@ def eliminar_tarea(archivo_json='tareas.json'):
     try:
         with open(archivo_json, 'w') as archivo:
             json.dump(tareas, archivo)
+        print("\nTarea eliminada")
     except FileNotFoundError as e:
         logging.error(f"Error: No se encontró el archivo '{archivo_json}")
     except PermissionError as e:
@@ -251,10 +327,23 @@ def actualizar_tarea(archivo_json='tareas.json'):
     while(iterador < len(tareas['tareas_activas'])):
         print('tarea '+ str(iterador + 1) +': ' + str(tareas['tareas_activas'][iterador]))
         iterador = iterador + 1
-    
+    print("\nA continuacion ingrese los datos o cancelar si desea interrumpir la acción\n")
     tarea_actualizar = input("Ingrese numero de tarea a actualizar\n")
+    if(tarea_actualizar == 'cancelar'):
+        logging.info("Accion cancelada")
+        print("Cancelado")
+        return
     elemento_actualizar = input("\nIndique que desea actualizar (titulo, descripcion, fecha_vencimiento, etiqueta):")
+    if(elemento_actualizar == 'cancelar'):
+        logging.info("Accion cancelada")
+        print("Cancelado")
+        return
     tareas['tareas_activas'][int(tarea_actualizar)-1][elemento_actualizar] = input("Ingrese nuevo valor:")
+    if(tareas['tareas_activas'][int(tarea_actualizar)-1][elemento_actualizar] == 'cancelar'):
+        logging.info("Accion cancelada")
+        print("Cancelado")
+        return
+    
     if(elemento_actualizar == 'fecha_vencimiento'):
         try:
             datetime.strptime(tareas['tareas_activas'][int(tarea_actualizar)-1][elemento_actualizar], "%d/%m/%Y")
@@ -266,6 +355,7 @@ def actualizar_tarea(archivo_json='tareas.json'):
     try:
         with open(archivo_json, 'w') as archivo:
             json.dump(tareas, archivo)
+        print("\nTarea actualizada")
     except FileNotFoundError as e:
         logging.error(f"Error: No se encontró el archivo '{archivo_json}")
     except PermissionError as e:
@@ -284,6 +374,7 @@ def consultar_tarea(titulo):
 
     if not tareas_activas:
         logging.info("No hay tareas activas con dicho titulo")
+        print("No hay tareas con dicho titulo")
     else:
         print('\nTareas activas filtradas por titulo:')
         for tarea in tareas_activas:
@@ -343,6 +434,8 @@ def marcar_tarea(titulo, nuevo_estado, archivo_json='tareas.json'):
             tarea['estado'] = nuevo_estado
             print(f"Tarea '{titulo}' marcada como {nuevo_estado}.")
             guardar_datos(datos, archivo_json)
+            logging.info("Datos actualizados")
+            print("Datos actualizados")
             return
     
     logging.warning(f"Tarea con título '{titulo}' no encontrada.")
@@ -367,29 +460,33 @@ def archivar_tareas(archivo_json='tareas.json'):
     guardar_datos(datos, archivo_json)
     # print("Tareas completadas archivadas exitosamente.")
     logging.info("Tareas completadas archivadas exitosamente.")
+    print("Tareas completadas archivadas exitosamente.")
 
 def consultar_tareas_archivadas(archivo_json='tareas.json'):
     datos = cargar_datos(archivo_json)
     
     if not datos['tareas_archivadas']:
         print("No hay tareas archivadas.")
+        logging.info("No hay tareas archivadas.")
         return
     
     print("Tareas Archivadas:")
     for tarea in datos['tareas_archivadas']:
         print(f"- {tarea['titulo']} (vencimiento: {tarea['fecha_vencimiento']}, etiqueta: {tarea['etiqueta']})")
+        logging.info("Mostrando tarea archivadas")
 
 def ver_tareas_no_archivadas(archivo_json='tareas.json'):
     datos = cargar_datos(archivo_json)
     
     if not datos['tareas_activas']:
         logging.info("No hay tareas activas.")
-        # print("No hay tareas activas.")
+        print("No hay tareas activas.")
         return
     
     print("Tareas No Archivadas:")
     for tarea in datos['tareas_activas']:
         print(f"- {tarea['titulo']} (estado: {tarea['estado']}, descripcion: {tarea['descripcion']}, vencimiento: {tarea['fecha_vencimiento']}, etiqueta: {tarea['etiqueta']})")
+        logging.info("Mostrando tareas no archivadas")
 
 def filtrar_por_fecha(fecha_inicio, fecha_termino):
     datos = cargar_datos()
@@ -423,6 +520,7 @@ def filtrar_por_fecha(fecha_inicio, fecha_termino):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas por fecha")
     
     if(fecha_inicio != ''):
         fecha1 = datetime.strptime(fecha_inicio, "%d/%m/%Y")
@@ -441,6 +539,7 @@ def filtrar_por_fecha(fecha_inicio, fecha_termino):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas archivadas por fecha")
 
 def filtrar_por_etiqueta(etiqueta):
     datos = cargar_datos()
@@ -459,6 +558,7 @@ def filtrar_por_etiqueta(etiqueta):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas por etiqueta")
     
     tareas_archivadas = [tareas for tareas in tareas_archivadas if tareas['etiqueta'].find(etiqueta) != -1]
     
@@ -472,6 +572,7 @@ def filtrar_por_etiqueta(etiqueta):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas archivadas por etiqueta")
 
 def filtrar_por_estado(estado):
     datos = cargar_datos()
@@ -490,6 +591,7 @@ def filtrar_por_estado(estado):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas por estado")
     
     tareas_archivadas = [tareas for tareas in tareas_archivadas if tareas['estado'] == estado]
     
@@ -503,6 +605,7 @@ def filtrar_por_estado(estado):
             print('Fecha vencimiento: '+ tarea['fecha_vencimiento'])
             print('Etiqueta: '+ tarea['etiqueta'])
             print('Estado: '+ tarea['estado'])
+        logging.info("Mostrar tareas archivadas por estado")
     
 # Ejecutar el menú
 menu()
