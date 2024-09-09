@@ -1,1 +1,27 @@
-{"tareas_activas": [{"titulo": "Ejemplo de tarea", "descripcion": "descripcion mas pulenta", "fecha_vencimiento": "15/09/2024", "etiqueta": "Trabajo", "estado": "en progreso"}, {"titulo": "t5", "descripcion": "5", "fecha_vencimiento": "15/09/2024", "etiqueta": "5", "estado": "pendiente"}, {"titulo": "Tarea 1 de ejemplo", "descripcion": "Tarea prueba", "fecha_vencimiento": "12/12/2023", "etiqueta": "Prueba", "estado": "pendiente"}], "tareas_archivadas": []}
+{
+    "tareas_activas": [
+        {
+            "titulo": "Ejemplo de tarea",
+            "descripcion": "descripcion",
+            "fecha_vencimiento": "15/09/2024",
+            "etiqueta": "Trabajo",
+            "estado": "en progreso"
+        },
+        {
+            "titulo": "t5",
+            "descripcion": "5",
+            "fecha_vencimiento": "15/09/2024",
+            "etiqueta": "5",
+            "estado": "pendiente"
+        }
+    ],
+    "tareas_archivadas": [
+        {
+            "titulo": "Tarea 1",
+            "descripcion": "Tarea que se debe realizar para obtener mayor puntaje",
+            "fecha_vencimiento": "12/12/2023",
+            "etiqueta": "No urgente",
+            "estado": "completada"
+        }
+    ]
+}

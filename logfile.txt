@@ -1,2 +1,55 @@
 2024-09-08 22:52:13 - INFO - Aplicación iniciada correctamente.
 2024-09-08 22:52:23 - INFO - Usuario ha iniciado sesión
+2024-09-09 08:53:20 - INFO - Aplicación iniciada correctamente.
+2024-09-09 08:53:25 - INFO - Usuario ha iniciado sesión
+2024-09-09 08:53:50 - WARNING - Formato de fecha no admitido
+2024-09-09 08:56:36 - INFO - Aplicación iniciada correctamente.
+2024-09-09 08:56:44 - INFO - Usuario ha iniciado sesión
+2024-09-09 09:00:14 - INFO - Aplicación iniciada correctamente.
+2024-09-09 09:00:21 - WARNING - Usuario no existe.
+2024-09-09 09:00:37 - INFO - Usuario ha iniciado sesión
+2024-09-09 09:01:12 - INFO - Tarea creada
+2024-09-09 09:08:59 - INFO - Aplicación iniciada correctamente.
+2024-09-09 09:09:02 - INFO - Usuario ha iniciado sesión
+2024-09-09 09:09:20 - INFO - No hay tareas archivadas con dicha titulo
+2024-09-09 09:22:39 - WARNING - No hay tareas completadas para archivar.
+2024-09-09 09:31:31 - INFO - Aplicación iniciada correctamente.
+2024-09-09 09:31:36 - INFO - Usuario ha iniciado sesión
+2024-09-09 09:31:44 - INFO - No hay tareas archivadas en dichas fechas
+2024-09-09 09:38:26 - INFO - No hay tareas activas con dicha etiqueta
+2024-09-09 09:38:26 - INFO - No hay tareas archivadas con dicha etiqueta
+2024-09-09 09:39:51 - INFO - No hay tareas archivadas con dicho estado
+2024-09-09 09:57:51 - INFO - Aplicación iniciada correctamente.
+2024-09-09 09:57:55 - INFO - Usuario ha iniciado sesión
+2024-09-09 09:58:05 - INFO - No hay tareas archivadas con dicha etiqueta
+2024-09-09 09:58:47 - WARNING - Opción no válida. Intente de nuevo.
+2024-09-09 09:59:12 - INFO - Aplicación iniciada correctamente.
+2024-09-09 10:41:34 - INFO - Usuario registrado
+2024-09-09 10:42:52 - INFO - Usuario ha iniciado sesión
+2024-09-09 11:33:01 - INFO - Aplicación iniciada correctamente.
+2024-09-09 11:33:04 - INFO - Usuario ha iniciado sesión
+2024-09-09 11:36:59 - INFO - Aplicación iniciada correctamente.
+2024-09-09 11:37:07 - INFO - Usuario ha iniciado sesión
+2024-09-09 11:37:17 - INFO - Accion cancelada
+2024-09-09 11:39:29 - INFO - Aplicación iniciada correctamente.
+2024-09-09 11:40:04 - INFO - Accion cancelada
+2024-09-09 11:43:39 - INFO - Aplicación iniciada correctamente.
+2024-09-09 11:43:43 - INFO - Aplicación iniciada correctamente.
+2024-09-09 11:43:52 - INFO - Accion cancelada
+2024-09-09 12:20:41 - INFO - Usuario ha iniciado sesión
+2024-09-09 12:21:19 - INFO - Tarea creada
+2024-09-09 12:21:46 - INFO - No hay tareas archivadas con dicha titulo
+2024-09-09 12:29:39 - INFO - Datos actualizados
+2024-09-09 12:30:13 - INFO - Tareas completadas archivadas exitosamente.
+2024-09-09 12:30:25 - INFO - Mostrando tarea archivadas
+2024-09-09 12:34:06 - INFO - Mostrar tareas por fecha
+2024-09-09 12:34:06 - INFO - Mostrar tareas archivadas por fecha
+2024-09-09 12:34:39 - INFO - Mostrar tareas por estado
+2024-09-09 12:34:39 - INFO - No hay tareas archivadas con dicho estado
+2024-09-09 12:35:01 - INFO - Aplicación iniciada correctamente.
+2024-09-09 12:35:04 - INFO - Usuario ha iniciado sesión
+2024-09-09 12:35:55 - INFO - No hay tareas activas con dicha etiqueta
+2024-09-09 12:35:55 - INFO - Mostrar tareas archivadas por etiqueta
+2024-09-09 12:38:24 - INFO - Aplicación iniciada correctamente.
+2024-09-09 12:39:18 - INFO - Usuario registrado
+2024-09-09 12:39:40 - INFO - Usuario ha iniciado sesión
