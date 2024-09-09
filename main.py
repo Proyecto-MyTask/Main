@@ -4,9 +4,12 @@ from datetime import datetime
 import logging
 import os
 
-logging.basicConfig(level=logging.DEBUG,  # Nivel mínimo a capturar
-                    format='%(asctime)s - %(levelname)s - %(message)s',  # Formato del mensaje
-                    datefmt='%Y-%m-%d %H:%M:%S')  
+logging.basicConfig(
+    filename='logfile.txt',  # Nombre del archivo donde se guardarán los logs
+    level=logging.DEBUG,     # Nivel de log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Formato del log
+    datefmt='%Y-%m-%d %H:%M:%S'  # Formato de la fecha
+)
 
 def menu():
     logging.info("Aplicación iniciada correctamente.")
@@ -98,7 +101,7 @@ def menu():
             ver_tareas_no_archivadas()
 
         else:
-            # print("Opción no válida. Intente de nuevo.")
+            print("Opción no válida. Intente de nuevo.")
             logging.warning("Opción no válida. Intente de nuevo.")
 
 def registrar_usuario(nombre_usuario, contraseña, archivo_json='usuarios.json'):
@@ -120,7 +123,7 @@ def registrar_usuario(nombre_usuario, contraseña, archivo_json='usuarios.json')
         
     # Verificar si el usuario ya existe
     if nombre_usuario in usuarios:
-        # print("El nombre de usuario ya existe. Intente con otro.")
+        print("El nombre de usuario ya existe. Intente con otro.")
         logging.warning("El nombre de usuario ya existe. Intente con otro.")
         return False
     
@@ -143,7 +146,7 @@ def registrar_usuario(nombre_usuario, contraseña, archivo_json='usuarios.json')
         logging.error("Error inesperado")
         return False
     
-    # print("Usuario registrado exitosamente.")
+    print("Usuario registrado exitosamente.")
     logging.info("Usuario registrado")
     return True
 
@@ -168,15 +171,15 @@ def iniciar_sesion(nombre_usuario, contraseña, archivo_json='usuarios.json'):
     if nombre_usuario in usuarios:
         contraseña_encriptada = encriptar_contraseña(contraseña)
         if usuarios[nombre_usuario] == contraseña_encriptada:
-            # print("Inicio de sesión exitoso.")
+            print("Inicio de sesión exitoso.")
             logging.info("Usuario ha iniciado sesión")
             return True
         else:
-            # print("Contraseña incorrecta.")
+            print("Contraseña incorrecta.")
             logging.warning("Contraseña incorrecta")
             return False
     else:
-        # print("El usuario no existe.")
+        print("El usuario no existe.")
         logging.warning("Usuario no existe.")
         return False
 
@@ -188,10 +191,12 @@ def crear_tarea(titulo, descripcion,fecha_vencimiento, etiqueta, estado, archivo
     tareas = cargar_datos()
     tarea_agregar = {'titulo':titulo,'descripcion':descripcion, 'fecha_vencimiento':fecha_vencimiento, 'etiqueta':etiqueta, 'estado':estado}
     tareas["tareas_activas"].append(tarea_agregar)
+    
 
     try:
         with open(archivo_json, 'w') as archivo:
             json.dump(tareas, archivo)
+        logging.info("Tarea creada")
     except FileNotFoundError as e:
         logging.error(f"Error: No se encontró el archivo '{archivo_json}")
     except PermissionError as e:
@@ -327,7 +332,7 @@ def marcar_tarea(titulo, nuevo_estado, archivo_json='tareas.json'):
             return
     
     logging.warning(f"Tarea con título '{titulo}' no encontrada.")
-    # print(f"Tarea con título '{titulo}' no encontrada.")
+    print(f"Tarea con título '{titulo}' no encontrada.")
 
 def archivar_tareas(archivo_json='tareas.json'):
     datos = cargar_datos(archivo_json)
