@@ -53,3 +53,4 @@
 2024-09-09 12:38:24 - INFO - Aplicación iniciada correctamente.
 2024-09-09 12:39:18 - INFO - Usuario registrado
 2024-09-09 12:39:40 - INFO - Usuario ha iniciado sesión
+2024-09-09 18:19:42 - INFO - Aplicación iniciada correctamente.

@@ -10,7 +10,8 @@ Cómo usar: Para la utilización del programa se deben seguir las instrucciones 
 --- Bienvenido, favor registrarse o iniciar sesión ---
 1. Registrarse
 2. Iniciar Sesión
-Seleccione una opción: SELECCIONAR OPCION(1 o 2)
+3. Salir
+Seleccione una opción: SELECCIONAR OPCION(1, 2 o 3)
 
 --- Menú ---
 1. Agregar tarea
